@@ -4,6 +4,8 @@ PandaAssistant turns a BIGTREETECH Panda Touch into a Home Assistant touchscreen
 
 > **Note:** This project is vibe coded with Claude and checked by a human.
 
+> **Warning:** Use this project at your own risk. I am not responsible for any damage. See the [Disclaimer](#disclaimer).
+
 ## Status
 
 | Part | State |
@@ -12,7 +14,7 @@ PandaAssistant turns a BIGTREETECH Panda Touch into a Home Assistant touchscreen
 | Home screen | Design mockup only |
 | Energy and Rooms screens | Not designed yet |
 
-Flashing replaces the stock Panda Touch firmware. Do this at your own risk and make a backup first.
+Flashing replaces the stock Panda Touch firmware. Make a backup first.
 
 ## Planned home screen
 
@@ -72,25 +74,4 @@ You can generate an API key with `openssl rand -base64 32`.
 Run this from the folder holding both files:
 
 ```
-docker run --rm -v "${PWD}":/config -it ghcr.io/esphome/esphome compile panda-assistant-test.yaml
-```
-
-### 4. Flash
-
-For the first install, write the **factory** binary over USB-C, using [ESPHome Web](https://web.esphome.io) or `esptool ... write-flash 0x0`. Later updates can go over Wi-Fi.
-
-## Hardware test
-
-The test screen shows:
-
-- Red, green and blue blocks, each of which should match its label
-- Four corner buttons, each of which should report its own position when tapped
-
-If the screen flickers, try `pclk_frequency: 16MHz`. The default of 14.8 MHz works out to about 32 Hz refresh.
-
-## Credits
-
-- [BTT Panda Touch ESPHome conversion](https://community.home-assistant.io/t/btt-panda-touch-esphome-ha-dashboard-conversion/1026634) by HaMMeR_Oz, the starting point for the test config
-- [PandaTouch_IDF](https://github.com/bigtreetech/PandaTouch_IDF) and [PandaTouch_PlatformIO](https://github.com/bigtreetech/PandaTouch_PlatformIO) by BIGTREETECH, used to check pins and timings
-
-This is an independent project, not affiliated with BIGTREETECH or Home Assistant.
+docker run --rm -v "${PWD}":/config -it ghcr.io/esphome/esphome compile
