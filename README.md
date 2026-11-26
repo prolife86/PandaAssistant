@@ -74,4 +74,29 @@ You can generate an API key with `openssl rand -base64 32`.
 Run this from the folder holding both files:
 
 ```
-docker run --rm -v "${PWD}":/config -it ghcr.io/esphome/esphome compile
+docker run --rm -v "${PWD}":/config -it ghcr.io/esphome/esphome compile panda-assistant-test.yaml
+```
+
+### 4. Flash
+
+For the first install, write the **factory** binary over USB-C, using [ESPHome Web](https://web.esphome.io) or `esptool ... write-flash 0x0`. Later updates can go over Wi-Fi.
+
+## Hardware test
+
+The test screen shows:
+
+- Red, green and blue blocks, each of which should match its label
+- Four corner buttons, each of which should report its own position when tapped
+
+If the screen flickers, try `pclk_frequency: 16MHz`. The default of 14.8 MHz works out to about 32 Hz refresh.
+
+## Credits
+
+- [BTT Panda Touch ESPHome conversion](https://community.home-assistant.io/t/btt-panda-touch-esphome-ha-dashboard-conversion/1026634) by HaMMeR_Oz, the starting point for the test config
+- [PandaTouch_IDF](https://github.com/bigtreetech/PandaTouch_IDF) and [PandaTouch_PlatformIO](https://github.com/bigtreetech/PandaTouch_PlatformIO) by BIGTREETECH, used to check pins and timings
+
+This is an independent project, not affiliated with BIGTREETECH or Home Assistant.
+
+## Disclaimer
+
+Use this project at your own risk. It is provided "as is", without warranty of any kind. I am not responsible for any damage to your Panda Touch or other equipment, loss of data, voided warranties or any other loss resulting from the use of the files or instructions in this repository.
