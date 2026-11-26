@@ -2,6 +2,8 @@
 
 PandaAssistant turns a BIGTREETECH Panda Touch into a Home Assistant touchscreen with ESPHome and LVGL: clock, weather, energy readings and quick controls. Work in progress.
 
+> **Note:** This project is vibe coded with Claude and checked by a human.
+
 ## Status
 
 | Part | State |
