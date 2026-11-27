@@ -10,7 +10,7 @@ PandaAssistant turns a BIGTREETECH Panda Touch into a Home Assistant touchscreen
 
 | Part | State |
 |---|---|
-| Hardware test config | Passes validation and code generation on ESPHome 2026.11.1. **Not yet compiled or run on a device.** |
+| Hardware test config | Compiles with ESPHome 2026.11.1. **Not yet tested on a device.** |
 | Home screen | Design mockup only |
 | Energy and Rooms screens | Not designed yet |
 
