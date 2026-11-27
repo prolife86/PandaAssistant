@@ -1,0 +1,33 @@
+name: Compile ESPHome config
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      ESPHOME_VERSION: "2026.11.1"
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Create dummy secrets
+        run: |
+          cat > secrets.yaml <<EOT
+          wifi_ssid: "ci-network"
+          wifi_password: "ci-dummy-password"
+          api_key: "$(openssl rand -base64 32)"
+          ota_password: "ci-dummy-ota"
+          ap_password: "ci-dummy-ap"
+          EOT
+
+      - name: Compile
+        run: >
+          docker run --rm -v "${PWD}":/config
+          "ghcr.io/esphome/esphome:${ESPHOME_VERSION}"
+          compile panda-assistant-test.yaml
